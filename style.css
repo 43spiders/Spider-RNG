@@ -1,0 +1,3021 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "KiwiSoda";
+}
+
+body {
+    background:
+linear-gradient(
+    135deg,
+    #090917,
+    #2b0540,
+    #090817
+);
+    color: white;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+@font-face {
+    font-family: "KiwiSoda";
+    src: url("KiwiSoda.ttf");
+}
+
+.container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.container h1 {
+    position: absolute;
+    top: 10%;
+
+    font-size: 60px;
+}
+
+#rollBtn {
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: rgb(255, 255, 255, 0.15);
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 50px;
+
+    position: absolute;
+    bottom: 160px;
+}
+
+#rollBtn:hover {
+    background-color: rgb(255, 255, 255, 0.30);
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}
+
+#inventoryBtn {
+    position: absolute;
+    right: 80px;
+    bottom: 20px;
+    color: white;
+
+    padding: 10px;
+
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#inventoryBtn:hover {
+    background-color: rgb(255, 255, 255, 0.30);
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}
+
+#chance {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#title {
+
+    display: flex;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: "Game";
+    src: url("Game.ttf");
+}
+
+#inventoryMenu {
+    position: fixed;
+
+    right: -700px;
+    top: 50px;
+
+    width: 700px;
+    height: 80vh;
+
+    background: rgba(15,15,25,0.95);
+
+    padding: 20px;
+
+    z-index: 999;
+
+    border-radius: 20px;
+}
+
+#discordButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 55px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#discordButton:hover {
+    transform: scale(1.2);
+}
+
+
+#inventoryMenu.active {
+    right: 350px;
+}
+
+
+#inventory-card {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+
+}
+
+#inventoryClose {
+
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    background: none;
+
+    color: rgb(255, 0, 0);
+
+    border: none;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+}
+
+#inventoryClose:hover {
+    color: rgb(255, 1, 1);
+    transform: scale(1.05);
+}
+
+#spiderFooter {
+
+    font-size: 15px;
+    position: absolute;
+
+    bottom: 5px;
+}
+
+#versionFooter {
+
+    font-size: 15px;
+    position: absolute;
+
+    bottom: 5px;
+    right: 200px;
+}
+
+.luck-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    background: rgba(255,255,255,0.15);
+    padding: 10px 20px;
+    border-radius: 15px;
+    
+}
+
+.luck-box img {
+    width: 20px;
+    height: 25px;
+}
+
+#luckText {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+#luckBtn {
+    background-color: white;
+    width: 100px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#coinDisplay {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 1px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    background: rgba(255,255,255,0.15);
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+#coinDisplay img {
+    width: 30px;
+    height: 30px;
+}
+
+#buyLuck {
+    padding: 10px 20px;
+    border-radius: 15px;
+    height: 40px;
+}
+
+#buyCoins {
+    padding: 10px 20px;
+    border-radius: 15px;
+    height: 40px;
+}
+
+#shop {
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    position: fixed;
+
+    top: 0;
+    right: -300px;
+
+    width: 300px;
+    height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        rgba(21, 3, 54, 0.95),
+        rgba(5, 5, 15, 0.95)
+    );
+
+    color: white;
+
+    padding: 25px;
+
+    transition: 0.4s ease;
+
+    backdrop-filter: blur(10px);
+
+    z-index: 999;
+}
+
+
+#shop.open {
+
+    right: 0;
+}
+
+#shopButton {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: white;
+
+    padding: 10px;
+
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+
+    z-index: 1000;
+
+    cursor:pointer;
+
+}
+
+#shopButton:hover {
+
+    transform: scale(1.05);
+    background-color: rgb(255, 255, 255, 0.30);
+    transition: 0.2s ease-in-out;
+}
+
+#buyLuck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#shop h2 {
+    text-align: center;
+
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+.shopItem {
+
+    width: 220px;
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+}
+
+
+.shopItem:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+.shopItem h3 {
+
+    margin: 0;
+
+    font-size: 22px;
+
+}
+
+
+.shopItem p {
+
+    margin: 0;
+
+    opacity: 0.8;
+
+}
+
+
+.shopItem button {
+
+    padding: 10px 25px;
+
+    border: solid 1px black;
+
+    border-radius: 10px;
+
+    background-color: rgb(42, 4, 100);
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    z-index: 1000;
+
+    font-size: 20px
+
+}
+
+
+.shopItem button:hover {
+
+    transform: scale(1.05);
+
+    box-shadow: 0 0 15px #140569;
+
+}
+
+#title {
+    transition: transform 0.1s ease;
+}
+
+@font-face {
+    font-family: "Sirius";
+    src: url("Sirius.otf");
+}
+
+@font-face {
+    font-family: "Superior";
+    src: url("Superior.otf");
+}
+
+@font-face {
+    font-family: "Refined";
+    src: url("Refined.ttf");
+}
+@font-face {
+    font-family: "Mystic";
+    src: url("Mystic.ttf");
+}
+
+@font-face {
+    font-family: "Arcane";
+    src: url("Arcane.ttf");
+}
+
+@font-face {
+    font-family: "Cinzel";
+    src: url("Cinzel.ttf");
+}
+
+@font-face {
+    font-family: "Enchanted";
+    src: url("Enchanted.ttf");
+}
+
+@font-face {
+    font-family: "Ancient";
+    src: url("Ancient.ttf");
+}
+
+@font-face {
+    font-family: "Astral";
+    src: url("Astral.ttf");
+}
+
+@font-face {
+    font-family: "Royal";
+    src: url("Royal.otf");
+}
+
+@font-face {
+    font-family: "Prismatic";
+    src: url("Prismatic.ttf");
+}
+
+@font-face {
+    font-family: "Stars";
+    src: url("Stars.ttf");
+}
+
+@font-face {
+    font-family: "Dragonline";
+    src: url("Dragonline.ttf");
+}
+
+@font-face {
+    font-family: "Radiant";
+    src: url("Radiant.ttf");
+}
+
+@font-face {
+    font-family: "Infernal";
+    src: url("Infernal.otf");
+}
+
+@font-face {
+    font-family: "Ascend";
+    src: url("Ascend.ttf");
+}
+
+
+
+
+.legendary {
+    animation: legendary 1.5s infinite alternate;
+}
+
+@keyframes legendary {
+    
+    from {
+
+        filter: drop-shadow(0 0 5px gold);
+    }
+
+    to {
+        filter: drop-shadow(0 0 25px gold);
+    }
+}
+
+.heroic {
+    animation:
+    heroicGlow 1s infinite alternate,
+    heroicFloat 2s infinite ease-in-out;
+}
+
+@keyframes heroicGlow {
+    from {
+        filter: drop-shadow(0 0 8px #ff5500);
+    }
+    to {
+        filter: drop-shadow(0 0 35px #ff0000);
+    }
+}
+
+@keyframes heroicFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+    
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.mythic {
+
+    background-size: 300% 300%;
+
+    animation:
+    mythicGlow 1.5s infinite alternate,
+    mythicGradient 3s infinite linear,
+    mythicFloat 2.5s infinite ease-in-out;
+
+}
+
+
+@keyframes mythicGlow {
+
+    from {
+
+        filter: drop-shadow(0 0 8px #b700ff);
+
+    }
+
+
+    to {
+
+        filter: drop-shadow(0 0 35px #ff00dd);
+
+    }
+
+}
+
+
+@keyframes mythicGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+
+@keyframes mythicFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-8px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.godly {
+
+    background-size: 400% 400%;
+
+    animation:
+    godlyGlow 1s infinite alternate,
+    godlyGradient 4s infinite linear,
+    godlyFloat 3s infinite ease-in-out;
+
+}
+
+@keyframes godlyGlow {
+
+    from {
+
+        filter: drop-shadow(0 0 10px white)
+                drop-shadow(0 0 20px gold);
+
+    }
+
+
+    to {
+
+        filter: drop-shadow(0 0 35px white)
+                drop-shadow(0 0 60px gold);
+
+    }
+
+}
+
+@keyframes godlyGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes godlyFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.ascend {
+
+    background-size: 500% 500%;
+
+    animation:
+    ascendGlow 1.2s infinite alternate,
+    ascendGradient 5s infinite linear,
+    ascendFloat 3s infinite ease-in-out;
+
+}
+
+@keyframes ascendGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #8b5cf6);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 40px white)
+        drop-shadow(0 0 80px #00eaff);
+
+    }
+
+}
+
+@keyframes ascendGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes ascendFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-12px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.sirius {
+
+    background-size: 400% 400%;
+
+    animation:
+    siriusGlow 1s infinite alternate,
+    siriusGradient 4s infinite linear,
+    siriusPulse 2s infinite ease-in-out;
+
+}
+
+@keyframes siriusGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #00c8ff);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 45px white)
+        drop-shadow(0 0 90px #0066ff);
+
+    }
+
+}
+
+@keyframes siriusPulse {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+
+    50% {
+
+        transform: scale(1.08);
+
+    }
+
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+.superior {
+
+    background-size: 300% 300%;
+
+    animation:
+    superiorGlow 1.5s infinite alternate,
+    superiorGradient 3s infinite linear,
+    superiorFloat 2.5s infinite ease-in-out;
+
+}
+
+@keyframes superiorGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 8px #ffffff)
+        drop-shadow(0 0 20px #38bdf8);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 35px #ffffff)
+        drop-shadow(0 0 60px #2563eb);
+
+    }
+
+}
+
+@keyframes superiorGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes superiorFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-6px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.refined {
+
+    background-size: 400% 400%;
+
+    animation:
+    refinedGlow 1.8s infinite alternate,
+    refinedGradient 4s infinite linear,
+    refinedFloat 3s infinite ease-in-out;
+
+}
+
+@keyframes refinedGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 5px #ffffff)
+        drop-shadow(0 0 15px #00ffff);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 30px #ffffff)
+        drop-shadow(0 0 55px #00ffff);
+
+    }
+
+}
+
+@keyframes refinedGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes refinedFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-5px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.mystic {
+
+    background-size: 400% 400%;
+
+    animation:
+    mysticGlow 1.3s infinite alternate,
+    mysticGradient 4s infinite linear,
+    mysticFloat 2.5s infinite ease-in-out;
+
+}
+
+@keyframes mysticGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 8px #7b00ff)
+        drop-shadow(0 0 20px #00aaff);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 35px #c000ff)
+        drop-shadow(0 0 60px #00ffff);
+
+    }
+
+}
+
+@keyframes mysticGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes mysticFloat {
+
+    0% {
+
+        transform: translateY(0) rotate(0deg);
+
+    }
+
+    50% {
+
+        transform: translateY(-7px) rotate(1deg);
+
+    }
+
+    100% {
+
+        transform: translateY(0) rotate(0deg);
+
+    }
+
+}
+
+.arcane {
+
+    background-size: 200% 200%;
+
+    animation:
+    arcaneGlow 1.5s infinite alternate,
+    arcaneGradient 0.5s infinite linear,
+    arcaneFloat 3s infinite ease-in-out;
+
+}
+
+@keyframes arcaneGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 8px #09b71a)
+        drop-shadow(0 0 20px #0a6e1d);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 40px #17ff60)
+        drop-shadow(0 0 70px #05b01c);
+
+    }
+
+}
+
+@keyframes arcaneGradient {
+
+    0% {
+
+        background-position: 0% 100%;
+
+    }
+
+
+    50% {
+
+        background-position: 200% 400%;
+
+    }
+
+
+    100% {
+
+        background-position: 100% 0%;
+
+    }
+
+}
+
+@keyframes arcaneFloat {
+
+    0% {
+
+        transform: translateY(0) scale(1);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-8px) scale(1.03);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0) scale(1);
+
+    }
+
+}
+
+.enchanted {
+
+    background-size: 300% 300%;
+
+    animation:
+    enchantedGlow 1.5s infinite alternate,
+    enchantedGradient 3s infinite linear,
+    enchantedPixel 0.2s infinite;
+
+}
+
+@keyframes enchantedGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 5px #ffc400)
+        drop-shadow(0 0 15px #fbff00);
+
+    }
+
+    to {
+
+        filter:
+        drop-shadow(0 0 25px #f6ff00)
+        drop-shadow(0 0 50px #ff9d00);
+
+    }
+
+}
+
+@keyframes enchantedGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes enchantedPixel {
+
+    0% {
+
+        transform: translate(0);
+
+    }
+
+    20% {
+
+        transform: translate(1px,-1px);
+
+    }
+
+    40% {
+
+        transform: translate(-1px,1px);
+
+    }
+
+    60% {
+
+        transform: translate(0);
+
+    }
+
+}
+
+.ancient {
+
+    background-size: 400% 400%;
+
+    animation:
+    ancientGlow 3s infinite alternate,
+    ancientFlow 8s infinite linear,
+    ancientPulse 4s infinite ease-in-out;
+
+}
+
+@keyframes ancientGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 5px #0ea5e9)
+        drop-shadow(0 0 15px #082f49);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 25px #38bdf8)
+        drop-shadow(0 0 60px #020617);
+
+    }
+
+}
+
+@keyframes ancientFlow {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes ancientPulse {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.03);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+.astral {
+
+    background-size: 500% 500%;
+
+    animation:
+    astralGlow 2s infinite alternate,
+    astralSpace 6s infinite linear,
+    astralFloat 4s infinite ease-in-out;
+
+}
+
+@keyframes astralGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 8px #7b2cbf)
+        drop-shadow(0 0 20px #00b4d8);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 40px #c77dff)
+        drop-shadow(0 0 80px #00ffff);
+
+    }
+
+}
+
+@keyframes astralSpace {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes astralFloat {
+
+    0% {
+
+        transform: translateY(0) rotate(0deg);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-8px) rotate(-2deg);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0) rotate(0deg);
+
+    }
+
+}
+
+.royal {
+
+    background-size: 400% 400%;
+
+    animation:
+    royalGlow 1.5s infinite alternate,
+    royalGradient 5s infinite linear,
+    royalFloat 3s infinite ease-in-out;
+
+}
+
+@keyframes royalGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 10px gold)
+        drop-shadow(0 0 20px #800080);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 40px #ffd700)
+        drop-shadow(0 0 70px #a020f0);
+
+    }
+
+}
+
+@keyframes royalGradient {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes royalFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+    }
+
+
+    50% {
+
+        transform: translateY(-5px);
+
+    }
+
+
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.prismatic {
+
+    background-size: 600% 600%;
+
+    animation:
+    prismaticGlow 1s infinite alternate,
+    prismaticShift 4s infinite linear,
+    prismaticPulse 2s infinite ease-in-out;
+
+}
+
+@keyframes prismaticGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #ff00ff);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 40px white)
+        drop-shadow(0 0 80px #00ffff);
+
+    }
+
+}
+
+@keyframes prismaticShift {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes prismaticPulse {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+
+    50% {
+
+        transform: scale(1.06);
+
+    }
+
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+.fiveStar {
+
+    background-size: 300% 300%;
+
+    animation:
+    fiveStarGlow 1s infinite alternate,
+    fiveStarShine 3s infinite linear,
+    fiveStarPulse 2s infinite ease-in-out;
+
+}
+
+@keyframes fiveStarGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 8px #ff69b4)
+        drop-shadow(0 0 20px #ff1493);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 35px #ff69b4)
+        drop-shadow(0 0 70px #ff1493);
+
+    }
+
+}
+
+@keyframes fiveStarShine {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes fiveStarPulse {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+
+    50% {
+
+        transform: scale(1.12);
+
+    }
+
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+.fiveStar::after {
+
+    content:"✦";
+
+    position:absolute;
+
+    animation: sparkle 1.5s infinite;
+
+}
+
+@keyframes sparkle {
+
+    0% {
+
+        opacity:0;
+        transform:scale(0);
+
+    }
+
+
+    50% {
+
+        opacity:1;
+        transform:scale(1.5);
+
+    }
+
+
+    100% {
+
+        opacity:0;
+        transform:scale(0);
+
+    }
+
+}
+
+.dragonline {
+
+    background-size: 400% 400%;
+
+    animation:
+    dragonGlow 1.2s infinite alternate,
+    dragonEnergy 3s infinite linear,
+    dragonPulse 2s infinite ease-in-out,
+    dragonShake 0.15s infinite;
+}
+
+@keyframes dragonGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 8px #ffff00)
+        drop-shadow(0 0 20px #00ff44);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 35px #ffff00)
+        drop-shadow(0 0 70px #00ff44);
+
+    }
+
+}
+
+@keyframes dragonEnergy {
+
+    0% {
+
+        background-position:0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position:100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+@keyframes dragonPulse {
+
+    0% {
+
+        transform:scale(1);
+
+    }
+
+
+    50% {
+
+        transform:scale(1.08);
+
+    }
+
+
+    100% {
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes dragonShake {
+
+    0% {
+        transform:translateX(0);
+    }
+
+    50% {
+        transform:translateX(1px);
+    }
+
+    100% {
+        transform:translateX(0);
+    }
+
+}
+
+.radiant {
+
+    background-size: 300% 300%;
+
+    animation:
+    radiantGlow 1s infinite alternate,
+    radiantShine 3s infinite linear,
+    radiantPulse 2s infinite ease-in-out;
+
+}
+
+@keyframes radiantGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #ffd700);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 45px white)
+        drop-shadow(0 0 90px #ffff00);
+
+    }
+
+}
+
+@keyframes radiantShine {
+
+    0% {
+
+        background-position:0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position:100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+@keyframes radiantPulse {
+
+    0% {
+
+        transform:scale(1);
+
+    }
+
+
+    50% {
+
+        transform:scale(1.1);
+
+    }
+
+
+    100% {
+
+        transform:scale(1);
+
+    }
+
+}
+
+.radiant::after {
+
+    content:"✦";
+
+    position:absolute;
+
+    animation:radiantStar 1.5s infinite;
+
+}
+
+@keyframes radiantStar {
+
+    0% {
+
+        opacity:0;
+        transform:scale(0);
+
+    }
+
+    50% {
+
+        opacity:1;
+        transform:scale(1.5);
+
+    }
+
+    100% {
+
+        opacity:0;
+        transform:scale(0);
+
+    }
+
+}
+
+.infernal {
+
+    background-size: 500% 500%;
+
+    animation:
+    infernalGlow 0.8s infinite alternate,
+    infernalFlow 3s infinite linear,
+    infernalShake 0.15s infinite,
+    infernalPulse 2s infinite;
+
+}
+
+@keyframes infernalGlow {
+
+    from {
+
+        filter:
+        drop-shadow(0 0 10px #ff0000)
+        drop-shadow(0 0 25px #ff5500);
+
+    }
+
+
+    to {
+
+        filter:
+        drop-shadow(0 0 50px #ff0000)
+        drop-shadow(0 0 100px #ff9900);
+
+    }
+
+}
+
+@keyframes infernalFlow {
+
+    0% {
+
+        background-position:0% 50%;
+
+    }
+
+
+    50% {
+
+        background-position:100% 50%;
+
+    }
+
+
+    100% {
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+@keyframes infernalShake {
+
+    0% {
+
+        transform:translateX(0);
+
+    }
+
+
+    25% {
+
+        transform:translateX(-1px);
+
+    }
+
+
+    50% {
+
+        transform:translateX(1px);
+
+    }
+
+
+    75% {
+
+        transform:translateX(-1px);
+
+    }
+
+
+    100% {
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes infernalPulse {
+
+    0% {
+
+        transform:scale(1);
+
+    }
+
+
+    50% {
+
+        transform:scale(1.12);
+
+    }
+
+
+    100% {
+
+        transform:scale(1);
+
+    }
+
+}
+
+.calm {
+
+    background-size: 300% 300%;
+
+    animation:
+
+    calmGlow 1s infinite alternate,
+
+
+
+}
+
+@keyframes calmGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #00ff00)
+
+        drop-shadow(0 0 25px #00ff00);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #00ff00)
+
+        drop-shadow(0 0 90px #00ff00);
+
+    }   
+}
+
+.empyrean {
+
+    background-size: 400% 400%;
+    animation:
+    empyreanGlow 1s infinite alternate,
+    empyreanGradient 4s infinite linear
+
+}
+
+@keyframes empyreanGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #ff0000)
+
+        drop-shadow(0 0 25px #ff0000);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #ff0000)
+
+        drop-shadow(0 0 90px #ff0000);
+
+    }   
+}
+
+@keyframes empyreanGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.relic {
+
+    background-size: 400% 400%;
+
+    animation:
+    relicGlow 1s infinite alternate,
+    relicGradient 4s infinite linear
+}
+
+@keyframes relicGlow {
+
+    from {
+        filter:
+        drop-shadow(0 0 10px #ff0000)
+        drop-shadow(0 0 25px #f6ff00);
+    }
+
+    to {
+        filter:
+        drop-shadow(0 0 45px #00ff08)
+        drop-shadow(0 0 90px #00aaff);
+    }   
+}
+
+@keyframes relicGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.ninetyNine {
+
+    background-size: 400% 400%;
+
+    animation:
+    ninetyNineGlow 1s infinite alternate,
+    ninetyNineGradient 4s infinite linear
+}
+
+@keyframes ninetyNineGlow {
+
+    from {
+        filter:
+        drop-shadow(0 0 10px #8800ff)
+        drop-shadow(0 0 25px #6fff00);
+    }
+
+    to {
+        filter:
+        drop-shadow(0 0 45px #6a00ff)
+        drop-shadow(0 0 90px #6fff00);
+    }   
+}
+
+@keyframes ninetyNineGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }  
+}
+
+@font-face {
+    font-family: "Genesis";
+    src: url("Genesis.ttf");
+}
+
+.genesis {
+    background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #008ccf 25%
+        #ffffff 50%,
+        #000000 75%,
+        #008ccf 100%
+    );
+
+    background-size: 800% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        genesisGradient 2s infinite ,
+        genesisGlow 1s infinite alternate;
+}
+
+@keyframes genesisGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #0073ff)
+
+        drop-shadow(0 0 25px #000000);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #000000)
+
+        drop-shadow(0 0 90px #0073ff);
+
+    }   
+}
+
+@keyframes genesisGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    25% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+
+}
+
+.eclipse {
+    background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #5d5d5d 20%,
+    #ffffff 50%,
+    #5d5d5d 80%,
+    #000000 100%
+);
+
+    background-size: 300% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        eclipseGradient 1s infinite,
+        eclipseGlow 1s infinite alternate;
+}
+
+@keyframes eclipseGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #fdfeff)
+
+        drop-shadow(0 0 25px #000000);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #000000)
+
+        drop-shadow(0 0 90px #ffffff);
+
+    }   
+}
+
+@keyframes eclipseGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    20% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    80% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+
+}   
+
+@font-face {
+    font-family: "Seraphic";
+    src: url("Seraphic.ttf");
+}
+
+.seraphic {
+    background: linear-gradient(
+        90deg,
+        #9ffa03 0%,
+        #cf0075 25%
+        #9ffa03 50%,
+        #cf0075 75%,
+        #9ffa03 100%
+    );
+
+    background-size: 800% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        seraphicGradient 2s infinite ,
+        seraphicGlow 1s infinite alternate;
+
+}
+
+@keyframes seraphicGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #9ffa03)
+
+        drop-shadow(0 0 25px #cf0075);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #cf0075)
+
+        drop-shadow(0 0 90px #9ffa03);
+
+    }
+}
+
+@keyframes seraphicGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    25% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+
+}   
+
+@font-face {
+    font-family: "Shin";
+    src: url("Shin.ttf");
+}
+
+.shin {
+
+    background: linear-gradient(
+        90deg,
+        #b03ad7 0%,
+        #e4e9eb 25%
+        #b03ad7 50%,
+        #e4e9eb 75%,
+        #b03ad7 100%
+    );
+
+    background-size: 400% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        shinGradient 2s infinite ,
+        shinGlow 1s infinite alternate;
+}
+
+@keyframes shinGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #b03ad7)
+
+        drop-shadow(0 0 25px #e4e9eb);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #e4e9eb)
+
+        drop-shadow(0 0 90px #b03ad7); 
+
+    }
+}
+
+@keyframes shinGradient {
+
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 0% 50%; }
+    75% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.siriusshiny {
+
+    background: linear-gradient(
+        90deg,
+        #00c8ff 0%,
+        #0066ff 25%
+        #00c8ff 50%,
+        #0066ff 75%,
+        #00c8ff 100%
+    );
+
+    background-size: 400% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        siriusshinyGradient 2s infinite ,
+        siriusshinyGlow 1s infinite alternate;
+
+}
+
+@keyframes siriusshinyGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #00c8ff)
+
+        drop-shadow(0 0 25px #0066ff);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #0066ff)
+
+        drop-shadow(0 0 90px #00c8ff);
+
+    }
+}
+
+@keyframes siriusshinyGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    25% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+
+}
+
+.starlight {
+
+    background: linear-gradient(
+        90deg,
+        #fff8f8 0%,
+        #ffff05 25%
+        #fff8f8 50%,
+        #ffff05 75%,
+        #fff8f8 100%
+    );
+
+    background-size: 400% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        starlightGradient 2s infinite ,
+        starlightGlow 1s infinite alternate;
+}
+
+@keyframes starlightGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #fff8f8)
+
+        drop-shadow(0 0 25px #ffff05);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #ffff05)
+
+        drop-shadow(0 0 90px #fff8f8);
+
+    }
+}
+
+@keyframes starlightGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    25% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+
+}
+
+.ascended {
+
+    background: linear-gradient(
+        90deg,
+        #49a8ec 0%,
+        #21d999 25%
+        #49a8ec 50%,
+        #21d999 75%,
+        #49a8ec 100%
+    );
+
+    background-size: 400% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        ascendedGradient 2s infinite ,
+        ascendedGlow 1s infinite alternate;
+}
+
+@keyframes ascendedGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #49a8ec)
+
+        drop-shadow(0 0 25px #21d999);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #21d999)
+
+        drop-shadow(0 0 90px #49a8ec);
+
+    }
+}
+
+@keyframes ascendedGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    25% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.prime {
+
+    background: linear-gradient(
+        90deg,
+        #fff8f8 0%,
+        #efef6e 25%
+        #32ed7d 50%,
+        #00aeff 75%,
+        #ff0040 100%
+    );
+
+    background-size: 400% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        primeGradient 5s infinite,
+        primeGlow 1s infinite alternate;
+}
+
+@keyframes primeGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px #fff8f8)
+
+        drop-shadow(0 0 25px #efef6e);
+
+    }
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px #efef6e)
+
+        drop-shadow(0 0 90px #fff8f8);
+
+    }
+}
+
+@keyframes primeGradient {
+
+    0% {
+        background-position: 0% 100%;
+    }
+    25% {
+        background-position: 100% 100%;
+    }
+    50% {
+        background-position: 0% 0%;
+    }
+    75% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+
+}
+
+.celestial {
+
+    background-size: 400% 400%;
+
+    animation:
+    celestialGlow 1s infinite alternate,
+    celestialGradient 4s infinite linear,
+    celestialFloat 3s infinite ease-in-out;
+}
+
+@keyframes celestialGlow {
+    from {
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #008ccf);
+    }
+    to {
+        filter:
+        drop-shadow(0 0 45px white)
+        drop-shadow(0 0 90px #008ccf);
+    }
+}
+
+@keyframes celestialGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes celestialFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@font-face {
+    font-family: "luminosity";
+    src: url("luminosity.ttf");
+}
+
+.luminosity {
+
+    background-size: 600% 400%;
+
+    background: linear-gradient (
+        135deg,
+        #FFFACD 0%,
+        #f6c987 25%,
+        #FFFACD 50%,
+        #ffca7a 75%,
+        #FFFACD 100%
+    );
+
+    animation:
+    luminosityGlow 1s infinite alternate,
+    luminosityGradient 2s infinite linear,
+    luminosityFloat 1.5s infinite ease-in-out;
+}
+
+@keyframes luminosityGlow {
+    from {
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #ecf891);
+    }
+    to {
+        filter:
+        drop-shadow(0 0 45px white)
+        drop-shadow(0 0 90px #e9f192);
+    }
+}
+
+@keyframes luminosityGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 600% 50%;
+    }
+
+    50% {
+        background-position: 0% 50%;
+    }
+
+    75% {
+        background-position: 600% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+
+}
+    
+
+@keyframes luminosityFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@font-face {
+    font-family: "Skyline";
+    src: url("Skyline.ttf");
+
+}
+
+.skyline {
+
+    background-size: 400% 400%;
+
+    font-size: 45px;
+
+    background: linear-gradient (
+        135deg,
+        #B0E0E6 0%,
+        #2288e2 25%,
+        #B0E0E6 50%,
+        #17bdf9 75%,
+        #B0E0E6 100%
+    );
+
+    animation:
+    skylineGlow 1s infinite alternate,
+    skylineGradient 5s infinite linear,
+    skylineFloat 1.5s infinite ease-in-out;
+
+}
+
+@keyframes skylineGlow {
+
+    from {
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #7fc3ff);
+    }
+
+    to {
+        filter:
+        drop-shadow(0 0 45px white)
+        drop-shadow(0 0 90px #7fc3ff);
+    }
+}
+
+@keyframes skylineGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 400% 50%;
+    }
+
+    50% {
+        background-position: 0% 50%;
+    }
+
+    75% {
+        background-position: 400% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes skylineFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@font-face {
+    font-family: "sovereign";
+    src: url("Sovereign.ttf");
+}
+
+.sovereign {
+
+    background-size: 400% 400%;
+
+    font-size: 45px;
+
+    background: linear-gradient (
+        135deg,
+        #020079 0%,
+        #FFFF00 25%,
+        #0021F3 50%,
+        #fbff00 75%,
+        #020079 100%
+    );
+
+    animation:
+    sovereignGlow 1s infinite alternate,
+    sovereignGradient 5s infinite linear,
+    sovereignFloat 1.5s infinite ease-in-out;
+
+}
+
+@keyframes sovereignGlow {
+
+    from {
+        filter:
+        drop-shadow(0 0 10px white)
+        drop-shadow(0 0 25px #ffff00);
+    }
+
+    to {
+        filter:
+        drop-shadow(0 0 45px white)
+        drop-shadow(0 0 90px #ffff00);
+    }
+}
+
+@keyframes sovereignGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 400% 50%;
+    }
+
+    50% {
+        background-position: 0% 50%;
+    }
+
+    75% {
+        background-position: 400% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+@keyframes sovereignFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(0);
+    }    
+}
+
+.deity {
+
+    background-size: 400% 400%;
+    font-size: 45px;
+
+    animation:
+    deityGlow 1s infinite alternate,
+    deityGradient 4s infinite linear,
+    deityFloat 3s infinite ease-in-out;
+}
+
+@keyframes deityGlow {
+
+    from {
+
+        filter:
+
+        drop-shadow(0 0 10px white)
+
+        drop-shadow(0 0 25px #e1ff02);
+
+    }
+
+
+    to {
+
+        filter:
+
+        drop-shadow(0 0 45px rgb(255, 247, 0))
+
+        drop-shadow(0 0 90px #f9f9f9);
+
+    }   
+}
+
+@keyframes deityGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+    75% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+@keyframes deityFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

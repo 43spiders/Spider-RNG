@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider RNG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="coinDisplay">
+        <img src="coin.png" alt="Coin">
+        <span id="coins">$0</span>
+    </div>
+
+    <div id="shop">
+        <h2>----- SHOP -----</h2>
+
+        <div class ="shopItem">
+
+            <h3>🍀 LUCK UPGRADE</h3>
+
+            <p>+1.5 LUCK</p>
+
+            <button data-upgrade="luck"
+                    data-price="50">
+                50💰
+            </button>
+
+        </div>
+
+            <div class="shopItem">
+
+                <h3>💰 COINS UPGRADE</h3>
+
+            <p>10% COINS P/ROLL</p>
+
+            <button data-upgrade="coins"
+                    data-price="20">
+                20💰
+            </button>
+
+    </div>
+
+    </div>
+
+    <button id="shopButton">
+        SHOP
+    </button>
+
+    
+
+    <div class="container">
+
+        <h1>Spider RNG</h1>
+
+        <div class="result">
+            <h2 id="title">...</h2>
+            <small id="chance"></small>
+        </div>
+
+        <button id="rollBtn">ROLL</button>
+
+        <div class="stats">
+            <p>Rolls: <span id="rolls">0</span></p>
+        </div>
+                
+            </div>
+    </div>
+
+    
+
+    <button id="inventoryBtn">INVENTORY</button>
+
+    <div id="inventoryMenu">
+        <h2>Inventory</h2>
+
+        <div id="inventory-card">
+
+        </div>
+
+        <button id="inventoryClose">x</button>
+    </div>
+
+    <div class="luck-box">
+
+            <img src="luck.png" alt="Luck">
+            <p id="luckText">x1</p>
+        </div>
+
+        <footer id="spiderFooter">&copy; Spider DEV</footer>
+
+        <footer id="versionFooter">Version: 0.0.1</V0></footer>
+
+        <a href="https://discord.gg/GGewsjJCkz" target="_blank">
+
+            <img src="discord-logo.png" id="discordButton" alt="Discord">
+
+        </a>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
